@@ -1,6 +1,7 @@
 import pygame 
-class Tile (pygame.sprite.Sprite()):
+class Tile(pygame.sprite.Sprite):
      def __init__(self , pos , size ):
+         super().__init__()
          # image/pygame.Surface don't have pos 
          # --> you have to store the blit pos in a rect 
          self.image = pygame.Surface((size , size))
