@@ -8,7 +8,7 @@ class Player(pygame.sprite.Sprite):
        self.image = self.animation["run"][self.frame]
        self.rect = self.image.get_rect(topleft = pos)
        self.direction = pygame.math.Vector2(0,0)
-       self.speed = 1
+       self.speed = 0.3
        self.gravity = 0.8
        self.jump_speed = -10
        self.last_update = pygame.time.get_ticks()
@@ -43,9 +43,10 @@ class Player(pygame.sprite.Sprite):
         #     self.frame += 1
         #     if self.frame >= len(self.animation["run"]):
         #         self.frame = 0
-        self.frame = (self.frame + 0.142)% len(self.animation['run'])
+        # -------------------------------------------------------------------
+        self.frame = (self.frame + 0.2)% len(self.animation['run'])
         self.image = self.animation['run'][int(self.frame)]
-
+        # -------------------------------------------------------------------
         # x,y = self.direction.x,self.direction.y
         # self.image = self.animation['run'][self.frame]
         # self.rect = self.image.get_rect()

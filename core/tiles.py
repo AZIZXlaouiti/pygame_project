@@ -8,6 +8,8 @@ class Tile(pygame.sprite.Sprite):
          self.image.fill("red")
          # get_rect --> create a new rect with size of self.image and pos  
          self.rect = self.image.get_rect(topleft = pos) 
-    def update(self , x_shift):
+    def update(self , shift):
         # camera shift
-        self.rect.x += x_shift
+        self.rect.x += shift[0]
+        self.rect.y += shift[1]
+        
