@@ -1,6 +1,6 @@
 import pygame 
 class Tile(pygame.sprite.Sprite):
-     def __init__(self , pos , size ):
+    def __init__(self , pos , size ):
          super().__init__()
          # image/pygame.Surface don't have pos 
          # --> you have to store the blit pos in a rect 
@@ -8,3 +8,6 @@ class Tile(pygame.sprite.Sprite):
          self.image.fill("red")
          # get_rect --> create a new rect with size of self.image and pos  
          self.rect = self.image.get_rect(topleft = pos) 
+    def update(self , x_shift):
+        # camera shift
+        self.rect.x += x_shift

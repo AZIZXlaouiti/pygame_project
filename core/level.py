@@ -5,6 +5,7 @@ class Level:
     def __init__(self, level_map ,surface ):
         self.surface = surface
         self.setup_level(level_map)
+        self.world_shift = 0
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()
         for index_row , row in enumerate(layout):
@@ -17,5 +18,6 @@ class Level:
                    self.tiles.add(tile)
 
     def run(self):
+        #adding camera by offsetting the world(i.e sprite Group) 
+        self.tiles.update(self.world_shift)
         self.tiles.draw(self.surface)
-
