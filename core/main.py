@@ -21,5 +21,5 @@ while True :
     level.run()
     # tile_sprite.draw(screen)
     pygame.display.update()
-    # print(clock.get_fps())
+    print(clock.get_fps())
     clock.tick(60)    

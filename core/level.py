@@ -33,12 +33,36 @@ class Level:
         else :
             self.world_shift = 0
             player_sprite.speed = 0.3  
+    def collision_y (self):
+        player_sprite = self.player.sprite 
+        player_sprite.rect.x += player_sprite.direction.x * player_sprite.speed    
+        for sprite in self.tiles.sprites():
+            if sprite.rect.colliderect(player_sprite.rect):
+                if player_sprite.direction.x < 0 :
+                    player_sprite.rect.left = sprite.rect.right 
+                elif player_sprite.direction.x > 0 :
+                    player_sprite.rect.right = sprite.rect.left    
+    def collision_x (self):
+        player_sprite = self.player.sprite 
+        player_sprite.add_gravity()
+        for sprite in self.tiles.sprites():
+            if sprite.rect.colliderect(player_sprite.rect):
+                if player_sprite.direction.y < 0 :
+                    player_sprite.rect.top = sprite.rect.bottom 
+                    player_sprite.direction.y = 0
+                elif player_sprite.direction.y > 0 :
+                    player_sprite.rect.bottom = sprite.rect.top    
+                    player_sprite.direction.y = 0
+                    
+
     def run(self):
         # adding camera by offsetting the world(i.e sprite Group) 
         # ---- tiles ----
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.surface)
+        self.scroll()
         # ---- player ---
         self.player.update()
+        self.collision_y()
+        self.collision_x()
         self.player.draw(self.surface)
-        self.scroll()
