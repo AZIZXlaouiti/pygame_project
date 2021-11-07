@@ -20,6 +20,13 @@ class Level:
                 if col == 'P':
                     player_sprite = Player((x,y))
                     self.player.add(player_sprite)
+    def scroll(self):
+        player_sprite = self.player.sprite 
+        player_rect = player_sprite.rect.centerx     
+        direction  = player_sprite.direction.x  
+        if player_rect < 200 :
+            self.world_shift  =  8
+            player_sprite.speed = 0      
     def run(self):
         # adding camera by offsetting the world(i.e sprite Group) 
         # ---- tiles ----
@@ -28,3 +35,4 @@ class Level:
         # ---- player ---
         self.player.update()
         self.player.draw(self.surface)
+        self.scroll()
