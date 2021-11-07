@@ -6,13 +6,13 @@ class Player(pygame.sprite.Sprite):
        self.load_animation()
        self.frame = 0
        self.image = self.animation["run"][self.frame]
-       self.rect =  self.image.get_rect(topleft = pos)
+       self.rect = self.image.get_rect()
        self.direction = pygame.math.Vector2(0,0)
        self.speed = 1
        self.gravity = 0.8
        self.jump_speed = -10
        self.last_update = pygame.time.get_ticks()
-       self.frame_rate = 60
+       self.frame_rate = 70
     def get_input(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
@@ -43,5 +43,7 @@ class Player(pygame.sprite.Sprite):
             self.frame += 1
             if self.frame >= len(self.animation["run"]):
                 self.frame = 0
+        # x,y = self.direction.x,self.direction.y
         self.image = self.animation['run'][self.frame]
-        self.rect = self.image.get_rect()
+        # self.rect = self.image.get_rect()
+        # self.direction.x,self.direction.y = x , y
