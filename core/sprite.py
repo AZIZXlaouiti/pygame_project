@@ -1,15 +1,16 @@
 import os,pygame
 import json
-file_dir = 'sprites/'
+file_dir = '../sprites/'
 class Spritesheet:
     def __init__(self,filename):
         self.filename = filename
-        self.sprite_sheet = pygame.image.load(os.path.join('sprites',filename)).convert()
+        self.sprite_sheet = pygame.image.load(os.path.join('../sprites',filename))
         self.meta_data = self.filename.replace('png','json')
         with open(file_dir + self.meta_data) as f :
             self.data = json.load(f)
         f.close()
     def get_sprite(self , x , y , w , h):
+        # blit sprite frame to the canvas surface 
         sprite = pygame.Surface((w,h)) #empty sprite image
         sprite.set_colorkey((0,0,0))
         sprite.blit(self.sprite_sheet,(0,0),(x , y , w , h))

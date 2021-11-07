@@ -1,8 +1,10 @@
-import pygame 
+import os,pygame 
 import sys  
 from settings import *
 from tiles import Tile
 from level import Level
+from sprite import Spritesheet
+
 # pygame initial setup 
 pygame.init()
 
@@ -17,9 +19,9 @@ while True :
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    screen.fill("black")
+    screen.fill("white")
     level.run()
     # tile_sprite.draw(screen)
     pygame.display.update()
-    print(clock.get_fps())
+    # print(clock.get_fps())
     clock.tick(60)    
