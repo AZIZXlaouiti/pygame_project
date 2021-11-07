@@ -24,10 +24,10 @@ class Level:
         player_sprite = self.player.sprite 
         player_rect = player_sprite.rect.centerx     
         direction  = player_sprite.direction.x  
-        if player_rect < 200 and direction < 0 :
+        if player_rect < WIDTH / 4  and direction < 0 :
             self.world_shift  =  8
             player_sprite.speed = 0      
-        elif player_rect > 1000 and direction >0 :
+        elif player_rect > WIDTH - (WIDTH / 4) and direction >0 :
             self.world_shift  =  -8
             player_sprite.speed = 0        
         else :
