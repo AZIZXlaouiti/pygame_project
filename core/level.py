@@ -12,17 +12,19 @@ class Level:
         self.player = pygame.sprite.GroupSingle()
         for index_row , row in enumerate(layout):
             for index_col ,col in enumerate(row): 
-               if col == 'X':
-                   y = index_row * tile_size
-                   x = index_col * tile_size
-                   tile = Tile((x,y),tile_size)
-                   self.tiles.add(tile)
-               if col == 'P':
-                   y = index_row * tile_size
-                   x = index_col * tile_size
-                   player_sprite = Player((x,y))
-                   self.tiles.add(player_sprite)
+                y = index_row * tile_size
+                x = index_col * tile_size
+                if col == 'X':
+                    tile = Tile((x,y),tile_size)
+                    self.tiles.add(tile)
+                if col == 'P':
+                    player_sprite = Player((x,y))
+                    self.player.add(player_sprite)
     def run(self):
-        #adding camera by offsetting the world(i.e sprite Group) 
+        # adding camera by offsetting the world(i.e sprite Group) 
+        # ---- tiles ----
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.surface)
+        # ---- player ---
+        self.player.update()
+        self.player.draw(self.surface)
