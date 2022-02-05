@@ -1,4 +1,5 @@
-import pygame 
+import pygame
+from __test__.debug import debug 
 from settings import *
 from Tiles import Tile
 from Player import Player
@@ -23,6 +24,8 @@ class Level:
                 if col == 'X':
                    Tile((x,y), [self.visible_sprites , self.collision_sprites])
                 if col == 'P':
-                   Player((x,y) , [self.visible_sprites])
+                   self.player = Player((x,y) , [self.visible_sprites])
     def run(self):
         self.visible_sprites.draw(self.display_surface)    
+        self.visible_sprites.update()
+        debug(self.player.direction)

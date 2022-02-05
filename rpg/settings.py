@@ -13,4 +13,4 @@ level_map = [
 tile_size = 64
 HEIGHT = len(level_map) * tile_size
 WIDTH = 700
-FPS = 60
+FPS = 30
